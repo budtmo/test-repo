@@ -1,0 +1,35 @@
+name: Example Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  jobA:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job A
+        run: echo "Running Job A"
+
+  jobB:
+    runs-on: ubuntu-latest
+    needs: jobA
+    strategy:
+      matrix:
+        param1: [1, 2, 3]  # Define your subruns here
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Job B - param1 ${{ matrix.param1 }}
+        run: echo "Running Job B - param1 ${{ matrix.param1 }}"
+
+  jobC:
+    runs-on: ubuntu-latest
+    needs: jobA
+
+    steps:
+      - name: Job C
+        run: echo "Running Job C"
