@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Job B - param1 ${{ matrix.param1 }}
         run: echo "Running Job B - param1 ${{ matrix.param1 }}"
