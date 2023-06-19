@@ -1,4 +1,4 @@
-FROM ubuntu:focal-20230308
+FROM ubuntu:focal-20230605
 
 RUN apt-get -qqy update && \
     apt dist-upgrade -y && \
